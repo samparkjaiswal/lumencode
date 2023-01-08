@@ -1,0 +1,130 @@
+<!-- <script>
+  async function test()
+    {
+        console.log('1');
+        console.log('2');
+      await console.log('3');
+      await  console.log('4');
+       await console.log('5');
+       await console.log('6');
+    }
+
+
+    test();
+    console.log('7');
+</script> -->
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"> </script> -->
+
+
+<!-- <script>
+        
+   async function check()
+    {
+        console.log('message:1');
+        let response = await fetch("json/fakedata.json");
+        console.log('prosessing');
+       
+        console.log(response.json());
+
+
+    //   console.log(response);
+
+        console.log('message:2');
+        console.log('message:3');
+    }
+
+     console.log('message:1a');
+
+    check();
+
+    console.log('message:6');
+    console.log('message:7');
+
+</script> -->
+
+
+<!-- <script>
+    async function testing()
+     { 
+        const response = await fetch('json/fakedata.json');
+        const students = await response.json();
+        return students;
+    }
+
+    testing().then((result) => {
+        console.log(result);
+    }).catch( (error) => {
+        console.log(error);
+    })
+
+</script> -->
+
+
+<script>
+    function makerequest(location)
+    {
+        return new Promise( (resolve, reject) => {
+            console.log(`making request, ${location}`);
+
+        if(location === "Google")
+        {
+            resolve('Hello Good To Talk U');
+        }
+        else 
+        {
+            reject('Sorry! i am talk only Google');
+        }
+
+        })
+
+    }
+
+
+    function processrequest(response)
+    {
+        return new Promise( (resolve, reject) => {
+            console.log('there is our porcess response');
+            if(response)
+            {
+                resolve(`after returning Extra info, ${response}`);
+            }
+            else 
+            {
+                reject('information not come');
+            }
+        })
+    }
+
+//this code is complex 
+
+    // makerequest('Google').then( (locationresponse) => {    //we pass arguments from here
+    //     console.log(locationresponse);
+    //     console.log('Response Recieved of Make request method');
+    //     return processrequest(locationresponse);   //request send from make request method
+    // }).then( (processedrequestresponse) => {
+    //     console.log('Responce from Process request method');
+    //     console.log(processedrequestresponse);
+    // }).catch( (err) => {                 //when we pass wrong string then this code print err
+    //     console.log(err);
+    // })
+
+
+    //so solve the complexity we use async await method 
+
+    async function data()
+    {
+        const makerequest_response = await makerequest('Google');   //when we pass wrong string then it also give error msg
+       
+        console.log(makerequest_response);   //print makerquest responce
+        console.log('Response Recieved of Make request method');
+
+        const processrequest_response = await processrequest(makerequest_response);
+        console.log('Responce from Process request method');
+        console.log(processrequest_response);    
+
+    }
+
+    data();
+
+
+</script>
